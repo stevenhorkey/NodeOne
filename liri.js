@@ -13,9 +13,22 @@ var command = process.argv[2]
 var input = process.argv[3]
 
 function myTweets(input){
+    var params = {screen_name: 'nodejs'};
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+        if (!error) {
+            console.log(tweets);
+        }
+});
     
 }
 function spotifyThisSong(input){
+    spotify.search({ type: 'track', query: input }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+       
+      console.log(data); 
+      });
 
 }
 function movieThis(input){
@@ -55,6 +68,7 @@ function movieThis(input){
     
 }
 function doWhatItSays(input){
+    
 
 }
 
