@@ -13,11 +13,20 @@ var command = process.argv[2]
 var input = process.argv[3]
 
 function myTweets(input){
-    var params = {screen_name: 'nodejs'};
+    var params = {screen_name: 'stevedevtech'};
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
-        if (!error) {
-            console.log(tweets);
-        }
+        if (error) {
+            throw error;
+         } else {
+            // console.log(tweets);
+            for (var i = 0; i<20; i++){
+                console.log('-----------------------')
+                console.log(tweets[i].text)
+                console.log(tweets[i].created_at)
+                console.log('-----------------------')
+                
+            }
+         }
 });
     
 }
@@ -25,9 +34,15 @@ function spotifyThisSong(input){
     spotify.search({ type: 'track', query: input }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
+        } else{
+            console.log('----------------------'); 
+            console.log(data.tracks.items[0].artists[0].name); 
+            console.log(data.tracks.items[0].name); 
+            console.log(data.tracks.items[0].preview_url); 
+            console.log(data.tracks.items[0].album.name);
+            console.log('----------------------'); 
         }
        
-      console.log(data); 
       });
 
 }
