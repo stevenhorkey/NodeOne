@@ -19,12 +19,32 @@ function myTweets(input){
             throw error;
         } else {
             // console.log(tweets);
+            var writeArr = ['########','my-tweets']
             for (var i = 0; i<20; i++){
                 console.log('-----------------------')
+                writeArr.push('-----------------------')
                 console.log(tweets[i].text)
+                writeArr.push(tweets[i].text)
                 console.log(tweets[i].created_at)
+                writeArr.push(tweets[i].created_at)
                 console.log('-----------------------') 
+                writeArr.push('-----------------------')
+                
             }
+            for(var i=0;i<writeArr.length;i++){
+                writeArr[i] = writeArr[i] + '\n';
+            }
+            writeArr = writeArr.join('')
+            
+            writeArr = writeArr.replace(',','');
+            // console.log(writeArr)
+            fs.appendFile("log.txt",writeArr,function (err) {
+
+                if (err) {
+                  return console.log(err);
+                }
+              
+            });
         }
     });   
 }
@@ -34,12 +54,34 @@ function spotifyThisSong(input){
             if (err) {
               return console.log('Error occurred: ' + err);
             } else{
+                var writeArr = ['########','spotify-this-song', nodeInput]
+                
                 console.log('----------------------'); 
+                writeArr.push('----------------------')                
                 console.log(data.tracks.items[0].artists[0].name); 
+                writeArr.push(data.tracks.items[0].artists[0].name)   
                 console.log(data.tracks.items[0].name); 
+                writeArr.push(data.tracks.items[0].name)                
                 console.log(data.tracks.items[0].preview_url); 
+                writeArr.push(data.tracks.items[0].preview_url)         
                 console.log(data.tracks.items[0].album.name);
-                console.log('----------------------'); 
+                writeArr.push(data.tracks.items[0].album.name)          
+                console.log('----------------------');
+                writeArr.push('----------------------')                                 
+                for(var i=0;i<writeArr.length;i++){
+                    writeArr[i] = writeArr[i] + '\n';
+                }
+                writeArr = writeArr.join('')
+                
+                writeArr = writeArr.replace(',','');
+                // console.log(writeArr)
+                fs.appendFile("log.txt",writeArr,function (err) {
+    
+                    if (err) {
+                      return console.log(err);
+                    }
+                  
+                });
             }
         });
     } else{
@@ -47,12 +89,35 @@ function spotifyThisSong(input){
             if (err) {
               return console.log('Error occurred: ' + err);
             } else{
+                var writeArr = ['########','spotify-this-song', nodeInput]
+                
                 console.log('----------------------'); 
+                writeArr.push('----------------------')              
                 console.log(data.tracks.items[0].artists[0].name); 
+                writeArr.push(data.tracks.items[0].artists[0].name)      
                 console.log(data.tracks.items[0].name); 
+                writeArr.push(data.tracks.items[0].name)              
                 console.log(data.tracks.items[0].preview_url); 
+                writeArr.push(data.tracks.items[0].preview_url)      
                 console.log(data.tracks.items[0].album.name);
+                writeArr.push(data.tracks.items[0].album.name)      
                 console.log('----------------------'); 
+                writeArr.push('----------------------')              
+
+                for(var i=0;i<writeArr.length;i++){
+                    writeArr[i] = writeArr[i] + '\n';
+                }
+                writeArr = writeArr.join('')
+                
+                writeArr = writeArr.replace(',','');
+                // console.log(writeArr)
+                fs.appendFile("log.txt",writeArr,function (err) {
+    
+                    if (err) {
+                      return console.log(err);
+                    }
+                  
+                });
             }
         });
     }
@@ -64,15 +129,45 @@ function movieThis(input){
         request("http://www.omdbapi.com/?t="+title+"&y=&plot=short&apikey=trilogy", function(error, response, body) {
 
             if (!error && response.statusCode === 200) {
-             
+
+                var writeArr = ['########','movie-this', nodeInput]
+                
+                console.log('----------------------')
+                writeArr.push('----------------------')                 
                 console.log(JSON.parse(body).Title);
+                writeArr.push(JSON.parse(body).Title)              
                 console.log(JSON.parse(body).Year);
-                console.log(JSON.parse(body).imdbRating);    
-                console.log(JSON.parse(body).Ratings[1].Value);    
+                writeArr.push(JSON.parse(body).Year)                 
+                console.log(JSON.parse(body).imdbRating); 
+                writeArr.push(JSON.parse(body).imdbRating)         
+                console.log(JSON.parse(body).Ratings[1].Value); 
+                writeArr.push(JSON.parse(body).Ratings[1].Value)         
                 console.log(JSON.parse(body).Country);
+                writeArr.push(JSON.parse(body).Country)                 
                 console.log(JSON.parse(body).Language);
+                writeArr.push(JSON.parse(body).Language)                 
                 console.log(JSON.parse(body).Plot);
+                writeArr.push(JSON.parse(body).Plot)                 
                 console.log(JSON.parse(body).Actors);
+                writeArr.push(JSON.parse(body).Actors)
+                console.log('----------------------');                
+                writeArr.push('----------------------');            
+                                 
+
+                for(var i=0;i<writeArr.length;i++){
+                    writeArr[i] = writeArr[i] + '\n';
+                }
+                writeArr = writeArr.join('')
+                
+                writeArr = writeArr.replace(',','');
+                // console.log(writeArr)
+                fs.appendFile("log.txt",writeArr,function (err) {
+    
+                    if (err) {
+                      return console.log(err);
+                    }
+                  
+                });
             }
         });
     } else {
@@ -80,14 +175,44 @@ function movieThis(input){
 
             if (!error && response.statusCode === 200) {
              
+                var writeArr = ['########','movie-this']
+                
+                console.log('----------------------')
+                writeArr.push('----------------------')                 
                 console.log(JSON.parse(body).Title);
+                writeArr.push(JSON.parse(body).Title)              
                 console.log(JSON.parse(body).Year);
-                console.log(JSON.parse(body).imdbRating);    
-                console.log(JSON.parse(body).Ratings[1].Value);    
+                writeArr.push(JSON.parse(body).Year)                 
+                console.log(JSON.parse(body).imdbRating); 
+                writeArr.push(JSON.parse(body).imdbRating)         
+                console.log(JSON.parse(body).Ratings[1].Value); 
+                writeArr.push(JSON.parse(body).Ratings[1].Value)         
                 console.log(JSON.parse(body).Country);
+                writeArr.push(JSON.parse(body).Country)                 
                 console.log(JSON.parse(body).Language);
+                writeArr.push(JSON.parse(body).Language)                 
                 console.log(JSON.parse(body).Plot);
+                writeArr.push(JSON.parse(body).Plot)                 
                 console.log(JSON.parse(body).Actors);
+                writeArr.push(JSON.parse(body).Actors)
+                console.log('----------------------');                
+                writeArr.push('----------------------');            
+                                 
+
+                for(var i=0;i<writeArr.length;i++){
+                    writeArr[i] = writeArr[i] + '\n';
+                }
+                writeArr = writeArr.join('')
+                
+                writeArr = writeArr.replace(',','');
+                // console.log(writeArr)
+                fs.appendFile("log.txt",writeArr,function (err) {
+    
+                    if (err) {
+                      return console.log(err);
+                    }
+                  
+                });
             }
         });
     }
@@ -101,7 +226,15 @@ function doWhatItSays(input){
         if (error) {
           return console.log(error);
         }
-      
+        var writeArr = ['########\n',command+'\n']
+        writeArr = writeArr.join('')        
+        fs.appendFile("log.txt",writeArr,function (err) {
+    
+            if (err) {
+              return console.log(err);
+            }
+        });
+        
         console.log(data);
       
         var dataArr = data.split(",");
